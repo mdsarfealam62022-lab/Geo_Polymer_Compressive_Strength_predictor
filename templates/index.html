@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geopolymer Strength Predictor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="header">
+                <h1><i class="fas fa-flask-vial"></i> Geopolymer Strength Predictor</h1>
+                <p class="subtitle">Predict 28-Day Compressive Strength</p>
+            </div>
+
+            <form id="predictionForm">
+                <!-- Aggregates -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-cube"></i> Aggregates</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Fly Ash (kg/m³)</label>
+                            <input type="number" name="FA (kg/m3)" value="252.0" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label>GGBFS (kg/m³)</label>
+                            <input type="number" name="GGBFS (kg/m3)" value="0.0" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Coarse Aggregate (kg/m³)</label>
+                            <input type="number" name="Coarse aggregate (kg/m3)" value="1000.0" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Fine Aggregate (kg/m³)</label>
+                            <input type="number" name="Fine aggregate (kg/m3)" value="700.0" step="any" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activated Solutions -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-flask"></i> Activated Solutions</div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Na₂SiO₃</label><input type="number" name="Na2SiO3" value="60.0" step="any" required></div>
+                        <div class="form-group"><label>NaOH</label><input type="number" name="NaOH" value="25.0" step="any" required></div>
+                        <div class="form-group"><label>Na₂O (Dry)</label><input type="number" name="Na2O (Dry)" value="10.0" step="any" required></div>
+                        <div class="form-group"><label>SiO₂ (Dry)</label><input type="number" name="Sio2 (Dry)" value="20.0" step="any" required></div>
+                    </div>
+                </div>
+
+                <!-- Water & Solutions -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-droplet"></i> Water & Solutions</div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Water (1)</label><input type="number" name="Water (1)" value="100.0" step="any" required></div>
+                        <div class="form-group"><label>Concentration NaOH (M)</label><input type="number" name="Concentration (M) NaOH" value="10.0" step="any" required></div>
+                        <div class="form-group"><label>Water (2)</label><input type="number" name="Water (2)" value="50.0" step="any" required></div>
+                        <div class="form-group"><label>NaOH (Dry)</label><input type="number" name="NaOH (Dry)" value="15.0" step="any" required></div>
+                        <div class="form-group"><label>Additional Water</label><input type="number" name="Additional water" value="0.0" step="any" required></div>
+                        <div class="form-group"><label>Total Water</label><input type="number" name="Total water" value="150.0" step="any" required></div>
+                    </div>
+                </div>
+
+                <!-- Additives -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-spray-can"></i> Additives</div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Superplasticizer</label><input type="number" name="Superplasticizer" value="0.0" step="any" required></div>
+                    </div>
+                </div>
+
+                <!-- Curing Conditions -->
+                <div class="form-section">
+                    <div class="section-title"><i class="fas fa-thermometer-half"></i> Curing Conditions</div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Initial Curing Time (days)</label><input type="number" name="Initial curing time (day)" value="1" step="any" required></div>
+                        <div class="form-group"><label>Initial Curing Temp (°C)</label><input type="number" name="Initial curing temp (C)" value="25" step="any" required></div>
+                        <div class="form-group"><label>Initial Rest Time (days)</label><input type="number" name="Initial curing rest time (day)" value="0" step="any" required></div>
+                        <div class="form-group"><label>Final Curing Temp (°C)</label><input type="number" name="Final curing temp (C)" value="25" step="any" required></div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-predict"><i class="fas fa-microchip"></i> Predict Strength</button>
+                    <button type="reset" class="btn-reset"><i class="fas fa-redo"></i> Clear Form</button>
+                </div>
+            </form>
+
+            <div id="predictionResult"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.form-section { margin-bottom: 15px; }
+.section-title { font-size: 22px; margin-bottom: 10px; color: #4a4a4a; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+label { font-weight: 600; }
+input[type="number"] { width: 100%; padding: 8px; font-size: 16px; }
+.button-group { display: flex; gap: 10px; margin-top: 15px; }
+button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+#predictionResult { margin-top: 20px; padding: 10px; display: none; border-radius: 8px; font-size: 18px; }
+#predictionResult.success { background-color: #e0f7e9; color: #2e7d32; }
+#predictionResult.error { background-color: #ffebee; color: #c62828; }
